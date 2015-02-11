@@ -1,0 +1,32 @@
+Partlist exported from /Users/sk/Documents/BNC/Base components.sch at 2/10/15 8:34 AM
+
+Part    Value         Device                   Package         Description                                                             PROD_ID   VALUE
+C1      0.1uF         0.1UF-25V-5%(0603)       0603-CAP        CAP-08604                                                               CAP-08604 0.1uF
+C2      0.1uF         0.1UF-25V-5%(0603)       0603-CAP        CAP-08604                                                               CAP-08604 0.1uF
+COS     BNCPTH        BNCPTH                   BNC             BNC Connector, Mouser Part# 5227161                                                    
+CU1     OPA344        OPA344                   SOT23-5         Single gate rail-to-rail output op-amp. Inputs extend 300mV past rails.                
+CU2     OPA344        OPA344                   SOT23-5         Single gate rail-to-rail output op-amp. Inputs extend 300mV past rails.                
+CU3     OPA344        OPA344                   SOT23-5         Single gate rail-to-rail output op-amp. Inputs extend 300mV past rails.                
+CU4     OPA344        OPA344                   SOT23-5         Single gate rail-to-rail output op-amp. Inputs extend 300mV past rails.                
+IAG-D1                LTE-302                  LTE-302         Through-hole side-firing 940nm IR LED                                                  
+IAG-R1  0.22          0.22OHM1/4W1%(0805)      0805            RES-09883                                                               RES-09883 0.22 
+IAG1    SN74LVC1G08   SN74LVC1G08              SOT23-5         Single-gate AND logic                                                                  
+IAG2    SN74LVC1G08   SN74LVC1G08              SOT23-5         Single-gate AND logic                                                                  
+IAG2-D2               LTE-302                  LTE-302         Through-hole side-firing 940nm IR LED                                                  
+IAG2-R2 0.22          0.22OHM1/4W1%(0805)      0805            RES-09883                                                               RES-09883 0.22 
+IAG3    SN74LVC1G08   SN74LVC1G08              SOT23-5         Single-gate AND logic                                                                  
+IAG3-D3               LTE-302                  LTE-302         Through-hole side-firing 940nm IR LED                                                  
+IAG3-R3 0.22          0.22OHM1/4W1%(0805)      0805            RES-09883                                                               RES-09883 0.22 
+IAG4    SN74LVC1G08   SN74LVC1G08              SOT23-5         Single-gate AND logic                                                                  
+IAG4-D4               LTE-302                  LTE-302         Through-hole side-firing 940nm IR LED                                                  
+IAG4-R4 0.22          0.22OHM1/4W1%(0805)      0805            RES-09883                                                               RES-09883 0.22 
+J1      POWER_JACKSLT POWER_JACKSLT            POWER_JACK_SLOT Power Jack                                                              PRT-00119      
+R1      10k           10KOHM-1/4W-1%(PTH)HORIZ AXIAL-0.3       RES-12183                                                               RES-12183 10k  
+R3      10k           10KOHM-1/4W-1%(PTH)HORIZ AXIAL-0.3       RES-12183                                                               RES-12183 10k  
+R4      10k           10KOHM-1/4W-1%(PTH)HORIZ AXIAL-0.3       RES-12183                                                               RES-12183 10k  
+R5      10k           10KOHM-1/4W-1%(PTH)HORIZ AXIAL-0.3       RES-12183                                                               RES-12183 10k  
+SIN     BNCPTH        BNCPTH                   BNC             BNC Connector, Mouser Part# 5227161                                                    
+U$11    BNCPTH        BNCPTH                   BNC             BNC Connector, Mouser Part# 5227161                                                    
+U$12    BNCPTH        BNCPTH                   BNC             BNC Connector, Mouser Part# 5227161                                                    
+U$13    BNCPTH        BNCPTH                   BNC             BNC Connector, Mouser Part# 5227161                                                    
+U$14    BNCPTH        BNCPTH                   BNC             BNC Connector, Mouser Part# 5227161                                                    
