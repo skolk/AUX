@@ -1,0 +1,67 @@
+package:
+  name: 3scan-scope    
+  version: {{ environ.get('GIT_DESCRIBE_TAG', "0.0.0") }}
+
+source:
+  path: "."
+
+build:
+  # The build number should be incremented for new builds of the same version
+  number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
+  #  string: devel
+
+  entry_points:
+    - runscope = KESMAcq.runscope:parseAndRun
+
+  # MRG NOTE: This line doesn't do anything, see: 
+  # https://github.com/conda/conda-build/issues/270
+  script: python setup.py install
+
+
+requirements:
+  # Packages required to build the package.
+  build: 
+    - 3scan-shared
+    - python
+    - cffi
+    - ipython
+    - setuptools
+    - patchelf  # [linux]
+    - pyparsing
+    - pycparser
+
+  # Packages required to run the package. 
+  run:
+    - 3scan-shared
+    - boto  # [linux]
+    - cffi  # [win]
+    - python
+    - numpy
+    - scipy
+    - pillow
+    - psutil
+    - pyserial # [win]
+    - pyzmq
+    - pymongo
+# test:
+#   imports:
+#     - KESMAcq
+#     - KESMAcq.shared
+#     - KESMAcq.drivers
+#     - KESMAcq.processes
+
+about:
+  home: https://github.com/3Scan/3scan-scope
+  license: Proprietary
+  summary: 3scan microscope control/acquisition/archival suite.
+
+# If the app key is present, the package will be an app, meaning it will
+# appear in the Anaconda launcher.
+# MRG Note: There are some key hitches that keep this from working at present.
+# seach conda-build issues if interested 
+# app:
+#   # The command that is called to launch the app
+#   entry: python launcher.py
+#   # Icon file contained in the recipe
+#   icon: logo.png
+#   summary: Launch 3Scan scope control.

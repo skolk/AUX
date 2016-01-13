@@ -1,0 +1,175 @@
+<template name='dashboard'>
+  <div class='container-fluid' style='padding-top: 20px'>
+    <div class='row'>
+      <div class='col-md-12'>
+        <div class='row'>
+          {{> systemPanel}}
+          {{> kesmPanels}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-static-top" id="dash_log">
+    <div class='navbar-inner'>
+      <a class='navbar-brand'>
+        System Logs
+      </a>
+      <ul class='nav'>
+        <li>
+          <a class='external-link logs-link'>
+            See More&nbsp;<i class='glyphicon glyphicon-share'></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    {{> _logViewerTable}}
+  </div>
+</template>
+
+<template name='systemPanel'>
+  <div class='col-md-3'>
+    <div id='system-panel' class="thumbnail machine">
+      <h3 class='text-center'>
+        System Properties
+      </h3>
+      {{> systemPropertyList}}
+    </div>
+  </div>
+</template>
+
+<template name='systemPropertyList'>
+  <div class='property-list'>
+    <ul class='property-list-box'>
+      {{#each panelProperties}}
+        {{> dashboardPanelReadout}}
+      {{/each}}
+    </ul>
+  </div>
+</template>
+
+<template name='dashboardPanelReadout'>
+  <li class='disabled'>
+    <div>
+      <a class='process-descriptor no-link'>
+        {{label}}
+        <div style='float: right; text-align: right'>
+          {{#if upDown}}
+            {{#if value}}
+              {{readoutIfTrue}}
+            {{else}}
+              {{readoutIfFalse}}
+            {{/if}}
+          
+            {{#with data on=value}}
+              {{> upDownIndicator}}
+            {{/with}}
+          {{else}}
+            {{value}}
+          {{/if}}
+        </div>
+      </a>
+    </div>
+  </li>
+</template>
+
+<template name='kesmPanels'>
+  {{#each allPossibleKesmNames}}
+    {{#with allDataForKesmName this}}
+      <div class='col-md-3'>
+        {{> kesmPanel}}
+      </div>
+    {{/with}}
+  {{/each}}
+</template>
+
+<template name='kesmPanel'>
+  <div class="thumbnail machine">
+    <h3 class='text-center'>
+      KESM-{{kesmName}}
+      <a  class='external-link kesm-control-link' 
+          title='Open KESM Control in new tab'
+          target="_blank"
+          href="{{uri}}"
+      >
+        <i class='glyphicon glyphicon-share pull-right'></i>
+      </a>
+    </h3>
+
+    {{#if active}}
+      {{> onlineKesmPanel}}
+    {{else}}
+      <dl class='dl-horizontal'>
+        <dt>status:</dt>
+        <dd class='{{classForOnline "offline"}}'>offline</dd>
+      </dl>
+    {{/if}}
+  </div>
+</template>
+
+<template name='onlineKesmPanel'>
+  <dl class='dl-horizontal'>
+    <dt>status:</dt>
+    <dd class='{{classForOnline "online"}}'>
+      online
+    </dd>
+    <dt style='height: 30px; line-height: 30px'>cpu:</dt>
+    <dd>
+      <span class='cpu-graph'></span>
+    </dd>
+    <dt style='height: 30px; line-height: 30px'>memory usage:</dt>
+    <dd>
+      <span class='memory-graph'></span>
+    </dd>
+  </dl>
+  {{> kesmPropertyList}}
+
+  <hr>
+  {{> auxboxPropertyList}}
+</template>
+
+<template name='auxboxPropertyList'>
+  <div class='property-list'>
+    <ul class='property-list-box'>
+      <li class='disabled'>
+        <div>
+          <a class="process-descriptor no-link">
+            Slice Capture
+            <div style='float:right; text-align: right'>
+              <i>Coming Soon!</i>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li class='disabled'>
+        <div>
+          <a class="process-descriptor no-link">
+            Bath Temperature
+            <div style='float:right; text-align: right'>
+              <span class='temp-graph'></span>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li class='disabled'>
+        <div>
+          <a class="process-descriptor no-link">
+            Bath Flow Rate
+            <div style='float:right; text-align: right'>
+              <span class='flow-graph'></span>
+            </div>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<template name='kesmPropertyList'>
+  <div class='property-list'>
+    <ul class='nav nav-tabs nav-stacked property-list-box'>
+      {{#each panelProperties}}
+        {{> dashboardPanelReadout}}
+      {{/each}}
+    </ul>
+  </div>
+</template>

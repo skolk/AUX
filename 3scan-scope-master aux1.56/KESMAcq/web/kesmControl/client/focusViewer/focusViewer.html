@@ -1,0 +1,30 @@
+<template name='focusViewer'>
+  <!-- Full-sized image -->
+  <h4 style='text-align: center'>
+    Full Image, scaled down to fit on screen and vertically stretched
+  </h4>
+  <div class='scrollable-image-container'>
+    <div class='focus-image half-size' style='background-image: url({{imagePath}})'>
+    </div>
+  </div>
+
+  <!-- <div class='image-spacer'></div> -->
+
+  <!-- Scrollable image -->
+  <h4 style='text-align: center'>Scrollable Image (full-size and vertically stretched)</h4>
+  <div class='scrollable-image-container'
+  >
+    <div class='focus-image full-size' style='background-image: url({{imagePath}})'></div>
+  </div>
+  
+  <!-- <div class='image-spacer'></div> -->
+
+  <!-- Big scrollable image -->
+  <h4 style='text-align: center'>Scrollable Image (double-size)</h4>
+  <div class='big scrollable-image-container'
+  >
+    <div class='focus-image double-size' style='background-image: url({{imagePath}})'></div>
+  </div>
+
+  <img id='invisible-image-holder' style='visibility: hidden;'>
+</template>

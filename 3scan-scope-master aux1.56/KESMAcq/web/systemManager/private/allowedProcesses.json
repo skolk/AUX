@@ -1,0 +1,14 @@
+{
+  "allowedProcesses": [
+    "FailWhale",
+    "ImageAnalyzer",
+    "ImageCompressor",
+    "ImageTiler",
+    "IOThread",
+    "KESMMain",
+    "MeteorServer",
+    "Receptionist",
+    "S3Uploader",
+    "SuccessKid"
+  ]
+}

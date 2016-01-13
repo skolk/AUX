@@ -1,0 +1,42 @@
+.sidebar.left.slice-viewer {
+  width: 150px;
+  left: 150px;
+  margin-left: -150px;
+}
+
+#slice-viewer-controls {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 45px;
+  text-align: center;
+}
+
+#z-slider-container {
+  height: 200px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#z-slider {
+  -webkit-appearance: slider-vertical;
+  height: 200px;
+}
+
+::-webkit-slider-thumb, ::-moz-range-thumb, ::-ms-thumb {
+  -webkit-appearance: none;
+  background-color: blue;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.rotate90 {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.rotate270 {
+  -webkit-transform: rotate(270deg);
+  transform: rotate(270deg);
+}

@@ -1,0 +1,167 @@
+@topNavBarHeight: 51px;
+@sidebarLeftWidth: 410px;
+@sidebarRightWidth: 410px;
+
+body {
+  padding-top: @topNavBarHeight !important;
+  padding-bottom: 0 !important;
+}
+
+hr {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.sidebar {
+  position: relative;
+  padding: 5px;
+  background-color: rgba(255,255,255, 0.7);
+}
+
+.sidebar.left {
+  float: left;
+  left: @sidebarLeftWidth;
+  margin-left: -@sidebarLeftWidth;
+  width: @sidebarLeftWidth;
+}
+
+.sidebar.right {
+  float: right;
+  right: @sidebarRightWidth;
+  margin-right: -@sidebarRightWidth;
+  width: @sidebarRightWidth;
+}
+
+.affix-bottom {
+  position: fixed !important;
+  bottom: 0;
+}
+
+.center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* fill the whole screen, starting below the nav bar */
+.entire-screen {
+  position: fixed;
+  top: @topNavBarHeight;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.bg {
+  z-index: -1000;
+}
+
+.fg {
+  z-index: 1000;
+}
+
+.leaflet-left {
+  left: @sidebarLeftWidth + 10px;
+}
+
+.leaflet-control-attribution.leaflet-control {
+  right: 312px;
+}
+
+.blur {
+  -webkit-filter: blur(20px);
+  -moz-filter: blur(20px);
+  -o-filter: blur(20px);
+  -ms-filter: blur(20px);
+  filter: blur(20px);
+  opacity: 0.4;
+}
+
+.form-group.short {
+  margin-bottom: 0px !important;
+}
+
+.form-group.short .control-label,
+.form-group.short .form-control-static {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  padding-left: 0px !important;
+}
+
+.button-table, .button-table tbody, .button-table tr, .button-table td {
+  border: none !important;
+  outline: none !important;
+  margin-bottom: 0px !important;
+}
+
+.inline-block {
+  display: inline-block !important;
+}
+
+.navbar-brand.active {
+  background-color: #e7e7e7;
+}
+
+.navbar-label-margins {
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.navbar-button-margins {
+  margin-top: 0px !important;
+}
+
+.kesm:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.connected.kesm {
+  color: green;
+}
+
+.disconnected.kesm {
+  color: red;
+}
+
+.external-link {
+  color: #0088cc !important;
+}
+
+.external-link:hover {
+  color: #005580 !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.no-link:hover {
+  text-decoration: none;
+  cursor: default;
+}
+
+.handy:hover {
+  cursor: pointer;
+}
+
+.navbar-3scan {
+  background-color: #fafafa;
+  // background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+  // background-repeat: repeat-x;
+  border-bottom: 1px solid #d4d4d4;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-vertical-middle {
+  line-height: @topNavBarHeight;
+}
+
+.input-minimal {
+  border: none;
+  background: transparent;
+  outline: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

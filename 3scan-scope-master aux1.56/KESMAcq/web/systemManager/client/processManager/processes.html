@@ -1,0 +1,115 @@
+<template name='processes'>
+  <div class='container-fluid' style='padding-top: 20px'>
+    <div class='row'>
+      <div class="col-md-2">
+        {{> processList}}
+      </div>
+      <div class="col-md-10">
+        {{> machineList}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name='processList'>
+  <div class='affix'>
+    <ul class='nav nav-tabs nav-stacked affix' id='allowed-process-container'>
+      <li class='active side-nav-title-container'>
+        <a id='side-nav-title'>Available Processes</a>
+      </li>
+      {{#each allowedProcesses}}
+        <li class='disabled'>
+          {{> processDescriptorDraggable}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</template>
+
+<template name='processDescriptorDraggable'>
+  <a class='process-descriptor'>{{this}}</a>
+</template>
+
+<template name='machineList'>
+  <div class='row'>
+    {{#each machines}}
+      <div style='float: left; width: 45%'>
+        {{> machine}}
+      </div>
+    {{/each}}
+  </div>
+</template>
+
+<template name='machine'>
+  <div class="thumbnail machine">
+    <h3 class='text-center'>
+      {{hostname}}
+      {{#unless connected}}
+        <small>
+          Offline
+        </small>
+        <i class='pull-right glyphicon glyphicon-remove remove-machine'></i>
+      {{/unless}}
+    </h3>
+    {{#if connected}}
+      <dl class='dl-horizontal'>
+        <dt>cpu:</dt>
+        <dd class='{{classForPercentage status.cpu}}'>
+          {{status.cpu}} %
+        </dd>
+        <dt>memory usage:</dt>
+        <dd class='{{classForPercentage status.memory}}'>
+          {{status.memory}} %
+        </dd>
+        <dt>version:</dt>
+        <dd class='{{classForBranch status.gitBranch}}'>
+          {{status.gitBranch}}
+        </dd>
+        <dt>git hash:</dt>
+        <dd class='muted'>
+          {{status.gitSHA}}
+        </dd>
+      </dl>
+      {{> machineProcesses}}
+      {{> dropProcessHere}}
+    {{/if}}
+
+  </div>
+</template>
+
+<template name='machineProcesses'>
+  <ul class='nav nav-tabs nav-stacked'>
+    {{#each processes}}
+      <li class='disabled'>
+        {{> runningProcess}}
+      </li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name='runningProcess'>
+  <a class='
+    process-descriptor
+    {{#unless status.isRunning}}
+      crashed
+    {{/unless}}
+  '>
+
+    {{className}}
+    {{#if status.crashCount}}
+      crashes: {{status.crashCount}}
+    {{/if}}
+
+    <i class='pull-right glyphicon glyphicon-remove remove-process'></i>
+
+    {{#unless status.isRunning}}
+      <i class='pull-right glyphicon glyphicon-repeat restart-process'></i>
+    {{/unless}}
+  </a>
+</template>
+
+<template name='dropProcessHere'>
+  <span class='drop-process-here'>
+    <i class='glyphicon glyphicon-plus'></i>
+  </span>
+</template>

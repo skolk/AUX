@@ -1,0 +1,49 @@
+<template name='slicingButtons'>
+  <div class='row' style='margin-bottom: 10px; '>
+    <div class='col-md-6 col-md-offset-3'>
+      <div class='input-group'>
+        <span class='input-group-addon'>Slice</span>
+        <input class='form-control' type='number' min=1
+               id='slice-several-input'
+               value="{{Session.get 'numFaces'}}"
+               {{disabledUnlessSlicing}}
+        />
+        <span class='input-group-btn'>
+          <button class='btn btn-success' id='slice-several-button' {{disabledUnlessSlicing}}>
+            Faces
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class='btn-group btn-group-justified' style='margin-bottom: 10px; '>
+    <div class='btn-group'>{{#with data queueAction='sliceSample' text='Slice Sample' class='btn-success'}}
+      {{> sliceActionButton}}
+    {{/with}}</div>
+    <div class='btn-group'>{{#with data queueAction='sliceOne' text='Slice One' class='btn-success'}}
+      {{> sliceActionButton}}
+    {{/with}}</div>
+    <div class='btn-group'>{{#with data queueAction='sliceFace' text='Slice Face' class='btn-success'}}
+      {{> sliceActionButton}}
+    {{/with}}</div>
+  </div>
+  <div class='btn-group btn-group-justified'>
+    <div class='btn-group'>{{#with data queueAction='finishFace' text='Finish Face' class='btn-danger'}}
+      {{> sliceActionButton}}
+    {{/with}}</div>
+    <div class='btn-group'>{{#with data queueAction='stopSlicing' text='Stop Slicing' class='btn-danger'}}
+      {{> sliceActionButton}}
+    {{/with}}</div>
+  </div>
+</template>
+
+<template name='sliceActionButton'>
+  <button
+  id='{{queueAction}}-button'
+  class='btn btn-block {{class}} {{disabledUnlessSlicing}}'
+  {{disabledUnlessSlicing}}
+  >
+    {{text}}
+  </button>
+</template>

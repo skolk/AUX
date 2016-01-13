@@ -1,0 +1,113 @@
+<template name='logViewer'>
+  {{> _logViewerUI}}
+  {{> _logViewerTable}}
+</template>
+
+<template name='_logViewerUI'>
+  <div class='container-fluid' style='margin-top: 15px; '>
+    <div class='row'>
+      <div class='col-md-12'>
+        <p>
+          <span class='well well-small'>
+            Store Debug Logs&nbsp;&nbsp;
+            <div style='display: inline-block; position: relative; top: 6px'>
+              {{> _logViewerStoreDebugLogs}}
+            </div>
+          </span>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+
+          <span class='well well-small'>
+            Messages
+            <select id='num-logs-input' style='width: 70px; margin-top: 8px'>
+              {{#each possibleNumLogs}}
+                <option>{{this}}</option>
+              {{/each}}
+            </select>
+          </span>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+
+          <span class='well well-small'>
+            Level
+            <select id='log-severity-input' style='width: 80px; margin-top: 8px'>
+              {{#each LOG_LEVELS}}
+                <option>{{this}}</option>
+              {{/each}}
+            </select>
+          </span>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+
+          <span class='well well-small'>
+            <div style='display: inline-block; '>
+              <div class='form-inline'>
+                <input class='input-medium' type="text" placeholder="Search By Module" id="module-search-input">
+                <button id='clear-module-search-button' class='btn btn-danger'>
+                  Clear
+                </button>
+              </div>
+            </div>
+          </span>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+
+          <span class='well well-small'>
+            <div style='display: inline-block; '>
+              Devices
+              <div class='btn-group'>
+                {{#each _logViewerDeviceArray}}
+                  {{> _logViewerDeviceButton}}
+                {{/each}}
+              </div>
+            </div>
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name='_logViewerStoreDebugLogs'>
+  {{#with data propName='storeDebugLogs' disabled=changing requiresAck=false}}
+    {{> onOffSwitch}}
+  {{/with}}
+</template>
+
+<template name='_logViewerDeviceButton'>
+  <button class='btn {{classForDevice}}'>{{deviceName}}</button>
+</template>
+
+<template name='_logViewerTable'>
+  <table class='table'>
+    <colgroup>
+      <col span="1" style="width: 250px; ">
+      <col span="1" style="width: 250px; ">
+      <col span="1" style="width: 400px; ">
+      <col span="1" style="width: 120px; ">
+      <col span="1" style="width: 1150px; ">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Device Name</th>
+        <th>Module</th>
+        <th>Log Level</th>
+        <th>Contents</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each logs}}
+        <tr class='{{classForLogLevel logLevel tableRow=1}}'>
+          <td>
+            <span class='text-{{classForLogLevel logLevel text=1}}'>
+              {{formatDate time}}
+            </span>
+          </td>
+          <td>
+            <span>{{deviceName}}</span>
+          </td>
+          <td><span class='label label-{{classForLogLevel logLevel}}'>{{module}}</span></td>
+          <td><span class='label label-{{classForLogLevel logLevel}}'>{{logLevel}}</span></td>
+          <td><span class='text-{{classForLogLevel logLevel text=1}}'>{{text}}</span></td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</template>

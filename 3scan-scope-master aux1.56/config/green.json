@@ -1,0 +1,47 @@
+{
+  "globals":{
+    "configName": "green",
+    "externalMongoURI": "mongodb://192.168.1.38:27017",
+    "imageServerBaseURI": "kesm.3scan.com",
+    "mongoURI": "mongodb://127.0.0.1/meteor",
+    "mongoOplogURI": "mongodb://localhost:27017/local",
+    "serverIPs": {
+      "log": "192.168.1.38",
+      "io": "192.168.1.38",
+      "img": "192.168.1.38",
+      "comp": "192.168.1.38",
+      "tile": "192.168.1.38",
+      "stat": "192.168.1.38"
+    },
+    "zmqPorts": {
+      "log": "12345",
+      "img": "12346",
+      "comp": "12347",
+      "tile": "12348",
+      "io": "12349",
+      "stat": "12350"
+    }
+  },
+  "KESMMain":{
+    "kesmName": "green",
+    "drivers": [
+      {"type": "aux", "name": "AuxSensor"}, 
+      {"type": "stage", "name": "A3200Stage"},
+      {"type": "camera", "name": "SaperaCamera"}
+    ],
+    "zmqTriggerPort": "1337"
+  },
+  "KESMControlServer": {
+    "kesmName": "green",
+    "hasAux": true,
+    "webURI": "http://green.kesm.3scan.com",
+    "webPort": "3200"   
+  },
+  "SystemWebServer": {
+      "webURI": "http://admin.kesm.3scan.com",
+      "webPort": "3000"
+  },
+  "IOThread": {
+    "dataFilePath": "/media/raid-array1/rawImageData"
+  }
+}

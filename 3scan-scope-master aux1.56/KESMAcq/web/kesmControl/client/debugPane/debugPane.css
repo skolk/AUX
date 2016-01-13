@@ -1,0 +1,10 @@
+.property-row.pending-request {
+  font-weight: bold;
+  color: white !important;
+  background-color: #c07000 !important;
+}
+
+.property-row.changing {
+  background-color: #7CADBB !important;
+  color: white !important;
+}

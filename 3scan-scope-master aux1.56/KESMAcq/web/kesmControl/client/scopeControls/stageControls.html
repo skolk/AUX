@@ -1,0 +1,160 @@
+<template name='scopeControls3D'>
+  <div id='scope-controls-3D'>
+    {{> scopeModeSwitcher}}
+    {{> cubes}}
+    {{> axisReadouts}}
+  </div>
+</template>
+
+<template name='scopeModeSwitcher'>
+  <div class='btn-group btn-group-justified' id='scope-mode-switcher'>
+    {{#each scopeModes}}
+      <div class='btn-group'>
+        {{> scopeModeButton}}
+      </div>
+    {{/each}}
+  </div>
+</template>
+
+<template name='scopeModeButton'>
+  <button class='btn scope-mode btn-{{classForMode}}'>{{mode}}</button>
+</template>
+
+<template name='cubes'>
+  <div id='cubes-container'></div>
+</template>
+
+<template name='axisReadouts'>
+  {{> axisReadoutsTable}}
+  <h4>Stage Position</h4>
+  {{> stagePositions}}
+</template>
+
+<template name='axisReadoutsTable'>
+  <div id='axis-readouts'>
+    <table id='axis-readouts-table' class='table table-condensed table-bordered'>
+      <thead>
+        <tr>
+          <th>Axis</th>
+          <th>Min (mm)</th>
+          <th>Max (mm)</th>
+          <th>Enabled</th>
+          <th>Homed</th>
+          <th>Fault</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each axes}}
+          <tr class='{{axis}} {{colorClassForAxis axis}}'>
+
+            <td>{{axis}}</td>
+
+            {{#with data minOrMax='min' axis=axis}}
+              <td>
+                {{> sliceExtentsPerAxis}}
+              </td>
+            {{/with}}
+
+            {{#with data minOrMax='max' axis=axis}}
+              <td>
+                {{> sliceExtentsPerAxis}}
+              </td>
+            {{/with}}
+
+            <td>{{> enabledPerAxis}}</td>
+            <td>{{> homedPerAxis}}</td>
+            <td>
+              {{#if isInFault axis}}
+                {{> faultButton}}
+              {{else}}
+                <span class='label label-success'>OK</span>
+              {{/if}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<template name='copyPositionButton'>
+  <button class='btn btn-dark' {{disabledOrNothing}}>
+    <span class='glyphicon glyphicon-screenshot'></span>
+  </button>
+</template>
+
+<template name='sliceExtentsPerAxis'>
+  <div class='input-group input-group-xs'> 
+    <input type="text"
+    id='slice-extents-input-{{minOrMax}}-{{axis}}'
+    class='form-control numeric float {{minOrMax}}' {{disabledOrNothing}}>
+    <span class='input-group-btn'>
+      {{> copyPositionButton}}
+    </span>
+  </div>
+</template>
+
+<template name='enabledPerAxis'>
+  {{#with data axis=axis propName=propName requiresAck=true}}
+    {{> onOffSwitch}}
+  {{/with}}
+</template>
+
+<template name='homedPerAxis'>
+  {{#with data axis=axis propName=propName requiresAck=true}}
+    {{> onOffSwitch}}
+  {{/with}}
+</template>
+
+<template name='faultButton'>
+  <button class='btn btn-xs btn-danger'>
+    Clear
+  </button>
+</template>
+
+<template name='stagePositions'>
+  <div class='stage-positions'>
+    {{#each axes}}
+      <div class='row'>
+        <div id='axis-positions' class='col-md-4'>
+          {{> stagePositionReadout}}
+        </div>
+        <div id='axis-sliders' class='col-md-8' style='margin-left: -12px; '>
+          <div class='inline-block' style='width: 100%; '>
+            {{> axisPositionSlider}}
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</template>
+
+<template name='stagePositionReadout'>
+  <span>
+    <div class='input-group input-group-xs'>
+      <span class='input-group-addon' aria-describedby="axis-position-{{axis}}">
+        {{axis}}
+      </span>
+      <input type='text' class='form-control'
+      id='axis-position-{{axis}}' {{disabledOrNothing}}>
+      <span class='input-group-addon' aria-describedby="axis-position-{{axis}}">
+        mm
+      </span>
+    </div>
+  </span>
+</template>
+
+<template name='axisPositionSlider'>
+  <div class='slider-container'>
+    <div class='position slider {{axis}}'>
+      <div class='background bar'>
+      </div>
+      <div class='lower bar'>
+      </div>
+      <div class='upper bar'>
+      </div>
+      <div class='handle'>
+      </div>
+    </div>
+  </div>
+</template>

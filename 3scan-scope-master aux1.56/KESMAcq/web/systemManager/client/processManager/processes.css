@@ -1,0 +1,60 @@
+.process-descriptor {
+  font-weight: bold;
+  color: rgb(61, 148, 216) !important;
+  cursor: pointer !important;
+}
+
+.crashed {
+  color: red !important;
+}
+
+.machine {
+}
+
+#allowed-process-container {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+.centered-element-container {
+  text-align: center;
+}
+
+.nav-tabs > li > a#side-nav-title {
+  font-weight: bold;
+  text-align: center;
+  margin-left: 0px;
+  margin-right: 0px;
+  background-color: rgb(238, 238, 238) !important;
+  /* to prevent a double border on the left and right */
+  border-left: none !important;
+  border-right: none !important;
+  border-radius: 0 !important;
+}
+
+.drop-process-here {
+  background-color: #D3ECFF;
+  font-size: x-large;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+
+.touched .drop-process-here {
+  background-color: #87FF7C !important;
+  color: black !important;
+}
+
+.in-drag .drop-process-here {
+  color: #D3ECFF;
+  background-color: blue;
+}
+
+.remove-process, .restart-process {
+  font-size: large;
+}
+
+.icon-test {
+  background-image: url("/images/pulse-green.jpeg") !important;
+  background-size: contain !important;
+}

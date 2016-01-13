@@ -1,0 +1,144 @@
+<head>
+  <title>KESM Control Page</title>
+  <link rel="shortcut icon" href="/images/brain-icon-blue-circle.png" type="image/png">
+  <style type="text/css">
+    body {
+      padding-top: 65px;
+      padding-bottom: 40px;
+    }
+  </style>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+
+
+<!-- Empty so iron-router will populate. -->
+<body>
+</body>
+
+<template name="layout">
+  <!-- General Top NavBar -->
+  {{> topNavBar }}
+  {{> yield}}
+
+</template>
+
+<template name="loading">
+  <!-- MRG TODO: figure out why loading icon so small fix. -->
+  <div class="container">
+    <div class="row">
+      <!-- Left side column -->
+      <div id="left-tools" class="col-md-3">
+      </div>
+
+    	<!-- Center Div with leaflet viewer -->
+      <div style="width:100px;"  id="center-tools" class="col-md-6">
+        <span class="glyphicon icon-spinner glyphicon-spin glyphicon-large"></span>
+      </div>
+
+    	<!-- Right side menu -->
+      <div id="right-tools" class="col-md-3">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="topNavBar">
+  <!-- Hot Header Action -->
+  <div class="navbar navbar-default navbar-fixed-top navbar-3scan">
+    <div class="container-fluid">
+      <div class='navbar-header'>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        {{#if Meteor.isSystemManager}}
+          <a class='navbar-brand {{activeIfCurrentRoute "/"}}' href="{{dashboardURI}}">
+            3Scan
+          </a>
+        {{else}}
+          <a class='navbar-brand' href="{{dashboardURI}}">
+            3Scan
+          </a>
+        {{/if}}
+      </div>
+      <div class='collapse navbar-collapse'>
+        <ul class="nav navbar-nav">
+          <li class='dropdown {{activeIfKesmControl}}'>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style='font-weight: bold; color: {{colorForKESM}}; '>
+              KESM Control
+              {{#unless Meteor.isSystemManager}}
+                &nbsp;-&nbsp;{{Meteor.serverName}}
+              {{/unless}}
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              {{#each allPossibleKesmNames}}
+                {{#with allDataForKesmName this}}
+                  {{> kesmProcessDropdownItem}}
+                {{/with}}
+              {{/each}}
+            </ul>
+          </li>
+          {{#if Meteor.isSystemManager}}
+            
+            {{#each systemRoutes}}
+              {{> navRoute}}
+            {{/each}}
+            
+            {{else}}
+
+            {{#each kesmRoutes}}
+              {{> navRoute}}
+            {{/each}}
+
+          {{/if}}
+        </ul>
+
+        <span class='pull-right navbar-vertical-middle'>
+          {{#unless Meteor.isSystemManager}}
+            {{> activeUserDisplay}}
+          {{/unless}}
+          &nbsp;&nbsp;&nbsp;
+          {{> loginButtons align="right"}}
+        </span>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </div>
+</template>
+
+<template name='activeUserDisplay'>
+  {{#if userIsActiveUser}}
+    <span class='label label-success navbar-label-margins'>You Are Active User</span>
+  {{else}}
+    <span class='label label-default navbar-label-margins'>
+      {{getPropValue 'activeUser' 'No One'}} Is Active User
+    </span>
+    {{#if currentUser}}
+      <button id='take-control-button' class='btn btn-warning navbar-button-margins'>
+        Take Control
+      </button>
+    {{/if}}
+  {{/if}}
+</template>
+
+<template name='navRoute'>
+  <li class='{{activeIfCurrentRoute path}}'>
+    <a href='{{uri}}' style='font-weight: bold; color: {{colorForKESM}}; '>
+      {{displayName}}
+    </a>
+  </li>
+</template>
+
+<template name='kesmProcessDropdownItem'>
+  <li>
+    <a href='{{uri}}'>
+      {{#with data on=machine.connected}}
+        {{> upDownIndicator}}
+      {{/with}}
+      {{kesmName}}
+    </a>
+  </li>
+</template>

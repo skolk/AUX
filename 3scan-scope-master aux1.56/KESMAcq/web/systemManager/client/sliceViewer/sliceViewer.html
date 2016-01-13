@@ -1,0 +1,62 @@
+<template name="sliceViewer">
+  <!-- Left side column -->
+  <div class="sidebar left fg slice-viewer">
+    {{> sliceViewerNav }}
+  </div>
+  <div class="col-md-10">
+    {{> sliceViewerLeaflet }}
+  </div>
+</template>
+
+<template name='sliceViewerNav'>
+  {{> sampleSwitcher enableSampleCreation=false disabled=false}}
+  
+  {{#if imagesInSample}}
+
+    <div id='slice-viewer-controls'>
+      {{> highestButton}}
+      {{> higherButton}}  
+
+      {{> sliceViewerZSlider}}
+
+      {{> lowerButton}}
+      {{> lowestButton}}
+    </div>
+  {{else}}
+    No Images for this Sample!
+  {{/if}}
+</template>
+
+<template name='sliceViewerZSlider'>
+  <div id='z-slider-container'>
+    <input id='z-slider' type='range' orient='vertical' {{attrs}}>
+  </div>
+</template>
+
+<template name='sliceViewerLeaflet'>
+  <div id='slice-viewer-leaflet' class='entire-screen'></div>
+</template>
+
+<template name='highestButton'>
+  <button id='top-button' class='btn btn-default'>
+    <span class='rotate90 glyphicon glyphicon-fast-backward'></span>
+  </button>
+</template>
+
+<template name='lowestButton'>
+  <button id='bottom-button' class='btn btn-default'>
+    <span class='rotate270 glyphicon glyphicon-fast-backward'></span>
+  </button>
+</template>
+
+<template name='higherButton'>
+  <button id='higher-button' class='btn btn-default'>
+    <span class='rotate90 glyphicon glyphicon-step-backward'></span>
+  </button>
+</template>
+
+<template name='lowerButton'>
+  <button id='lower-button' class='btn btn-default'>
+    <span class='rotate270 glyphicon glyphicon-step-backward'></span>
+  </button>
+</template>

@@ -1,0 +1,28 @@
+<template name="stageData">
+  <div class='container' style='padding-top: 20px'>
+    <div class="col-md-12">
+      <h2>Stage Data for {{Meteor.serverName}}</h2>
+      <span class='pull-left'>
+        <h4>
+          Image ID:&nbsp;{{imageId}}&nbsp;&nbsp;&nbsp;
+        </h4>
+      </span>
+      <span class='pull-left'>
+        <a class='btn btn-default' href='{{stageDataExportURI}}' target='_blank'>
+          Export to CSV
+        </a>
+        <a class='btn btn-default' href='{{rawImageURI}}' target='_blank'>
+        View Raw Image
+        </a>
+      </span>
+      <br><br>
+      {{availableActions}}
+      {{> stageDataPlot}}
+    </div>
+  </div>
+</template>
+
+<template name="stageDataPlot">
+  <div id="graph" class="aGraph">
+  </div>
+</template>

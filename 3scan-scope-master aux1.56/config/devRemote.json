@@ -1,0 +1,41 @@
+{
+  "globals": {
+    "configName": "devRemote",
+    "baseURI": "dev.3scan.com",
+    "serverIPs": {
+      "log": "127.0.0.1",
+      "io": "127.0.0.1",
+      "img": "127.0.0.1",
+      "comp": "127.0.0.1",
+      "tile": "127.0.0.1",
+      "stat": "127.0.0.1"
+    },
+    "zmqPorts": {
+      "log": "12345",
+      "img": "12346",
+      "comp": "12347",
+      "tile": "12348",
+      "io": "12349",
+      "stat": "12350"
+    }
+  },
+  "mongo": {
+    "URI": "mongodb://192.168.1.94/meteor",
+    "externalURI": "mongodb://192.168.1.94:27017",
+    "OplogURI": "mongodb://192.168.1.94:27017/local"
+  },
+  "KESMMain": {
+    "kesmName": "purple",
+    "zmqTriggerPort": "1337",
+    "drivers": [{
+      "type": "stage",
+      "name": "FakeStage"
+    }, {
+      "type": "aux",
+      "name": "FakeAux"
+    }, {
+      "type": "camera",
+      "name": "FakeCamera"
+    }]
+  }
+}

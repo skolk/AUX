@@ -1,0 +1,19 @@
+<template name='onOffSwitch'>
+  <div class="onoffswitch center">
+    <input type="checkbox" id='{{checkboxId}}' name="onoffswitch" class="onoffswitch-checkbox {{checkedClass}}">
+    <label class="onoffswitch-label" for='{{checkboxId}}'>
+      <div class="onoffswitch-inner"></div>
+      {{#if changingState}}
+        <div class="onoffswitch-switch changing">
+          <i class='icon-refresh icon-spin fit-in-switch'></i>
+        </div>
+      {{else}}
+        {{#if disabled}}
+          <div class="onoffswitch-switch disabled"></div>
+        {{else}}
+          <div class='onoffswitch-switch'></div>
+        {{/if}}
+      {{/if}}
+    </label>
+  </div>
+</template>

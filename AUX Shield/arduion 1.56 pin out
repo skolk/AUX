@@ -1,0 +1,26 @@
+arduion 1.56 pin out
+A8 = pH
+2 = liquid flow 
+
+4 = MS2
+5 = MS1 
+6 = dir
+7 = step
+
+
+8 = opics cs
+9 = pump flow cs
+
+10 = temp
+
+relay 
+22  = pump
+24  = p.pump
+26  = heater
+
+auto focus (optics trip)
+38 = 
+40 = 
+
+51 = DI
+52 = SCK

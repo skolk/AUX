@@ -1,0 +1,31 @@
+@focusImageWidth: 4096px;
+@focusImageHeight: 96px;
+@screenWidth: 1920px;
+
+.image-spacer {
+  display: inline-block;
+  height: 5px;
+  width: 100%;
+}
+
+.scrollable-image-container {
+  height: @focusImageHeight * 3;
+  width: @screenWidth;
+  overflow-x: scroll;
+}
+
+.focus-image {
+  height: @focusImageHeight * 3;
+  width: @focusImageWidth;
+  background-size: (@focusImageWidth) (@focusImageHeight * 3);
+}
+
+.focus-image.half-size {
+  width: @focusImageWidth / 2;
+  background-size: (@focusImageWidth / 2) (@focusImageHeight * 3);
+}
+
+.focus-image.double-size {
+  width: @focusImageWidth * 2;
+  background-size: (@focusImageWidth * 2) (@focusImageHeight * 3);
+}

@@ -1,0 +1,110 @@
+<template name="kesmControls">
+  <div id='left-tools' class="affix-top sidebar left fg">
+    {{> scopeControls3D}}
+  </div>
+  <div id='right-tools' class='affix-top sidebar right fg'>
+    <h4>Status</h4>
+    <hr class='on-white'>
+    
+    {{> thingsToMonitor}}
+    
+    <h4>Sample</h4>
+    <hr class='on-white'>
+    
+    {{> sampleSwitcher enableSampleCreation=true disabled=slicingOrChanging}}
+    <br> 
+    <div class='clearfix'>
+      {{> sliceSettings}}
+    </div>    
+
+    <br>
+    <h4>Slice Controls</h4>
+    <hr class='on-white'>
+
+    {{> slicingButtons}}
+  </div>
+  <div id='slice-buttons' class='affix-bottom sidebar right fg'>
+  </div>
+
+  {{> scopeLeafletViewer}}
+
+  {{> newSampleDialog}}
+
+</template>
+
+<template name='thingsToMonitor'>
+  <div class='form-horizontal'>
+    {{#thingToMonitor label="Client"}}
+      {{#with data on=Meteor.status.connected}}
+        {{> upDownIndicator}}
+      {{/with}}
+    {{/thingToMonitor}}
+
+    {{#thingToMonitor label="KESM"}}
+      {{#with data on=kesmStatus}}
+        {{> upDownIndicator}}
+      {{/with}}
+    {{/thingToMonitor}}
+
+    {{#thingToMonitor label="Save Queue"}}
+      {{getRoundedProp 'waitingImageCount' 'Unknown' 1}}
+    {{/thingToMonitor}}
+
+    {{#thingToMonitor label="Slice Queue"}}
+      {{getPropValue 'slice_queue' 'Unknown'}}
+    {{/thingToMonitor}}
+
+    {{#thingToMonitor label="Last Image UUID"}}
+      {{> lastImageCopyable}}
+    {{/thingToMonitor}}
+
+    {{#thingToMonitor label='Rake Delta'}}
+      {{getRoundedProp 'slice_rakeDelta' 'Unknown' 1}}
+    {{/thingToMonitor}}
+
+    {{#thingToMonitor label="Bath Temp"}}
+      {{getRoundedProp 'bath_temp' 'Unknown' 1}}&nbsp;&deg;C
+    {{/thingToMonitor}}
+
+    {{#thingToMonitor label="Bath Flow"}}
+      {{getRoundedProp 'bath_flow' 'Unknown' 1}}&nbsp;L/hr
+    {{/thingToMonitor}}
+  </div>
+</template>
+
+<template name='thingToMonitor'>
+  <div class='form-group short'>
+    <label class='col-md-6 control-label'>
+      {{label}}
+    </label>
+    <p class='col-md-6 form-control-static'>
+    {{> Template.contentBlock}}
+    </p>
+  </div>
+</template>
+
+<template name='sliceSettings'>
+  <div class="form-horizontal">
+    {{#each SliceNumericProperties}}
+      {{> numberPropertyDisplay}}
+    {{/each}}
+  </div>
+</template>
+
+<template name='numberPropertyDisplay'>
+  <div class="form-group short">
+    <label class="col-md-6 control-label" for="{{inputId}}">{{text}}</label>
+    <div class='input-group input-group-xs'>
+      <input class='form-control numeric float' type="text" id="{{inputId}}" placeholder="" {{disabledIfSlicingOrChanging}}>
+      <span class='input-group-addon units'>{{{units}}}</span>
+    </div>
+  </div>
+</template>
+
+<template name='lastImageCopyable'>
+  <input class='input-minimal' type='text' id='last-image-uuid' style='max-width: 180px; ' readonly>
+</template>
+
+<template name="scopeLeafletViewer">
+  <div id="leaflet-container" class='entire-screen'></div>
+</template>

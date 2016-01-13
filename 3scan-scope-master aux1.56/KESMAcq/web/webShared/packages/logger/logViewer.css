@@ -1,0 +1,11 @@
+.log-text {
+  padding: 0.3em;
+  background-color: #def;
+  color: #555;
+}
+
+.log-time {
+  padding: 0.3em;
+  color: #80b0ff;
+  background-color: #444;
+}

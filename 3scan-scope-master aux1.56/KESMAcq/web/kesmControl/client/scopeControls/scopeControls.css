@@ -1,0 +1,206 @@
+hr.on-white {
+  border-color: #bbb;
+}
+
+input.numeric {
+/*  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  margin-bottom: 0px !important;*/
+}
+
+input.numeric.integer {
+  width: 17px;
+}
+
+input.numeric.float {
+  width: 60px;
+}
+
+.input-group-addon.units {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  margin-bottom: 0px !important;
+  width: 50px !important;
+  text-align: center;
+}
+
+#scope-controls-3D {
+  position: relative;
+}
+
+#axis-readouts-table {
+  margin-bottom: 0px;
+  position: relative;
+  width: 300px;
+}
+
+#scope-mode-switcher {
+  position: absolute;
+  top: 0px;
+}
+
+.btn.scope-mode {
+  border-bottom-width: 2px;
+}
+
+.btn.scope-mode.active {
+  cursor: default;
+  text-transform: uppercase;
+  text-shadow: none;
+  font-weight: bold;
+  border-bottom: 2px solid black;
+}
+
+tr.shaded {
+  background-color: #ddd !important;
+}
+
+tr.fault {
+  background-color: red;
+}
+
+/*
+replicated from bootstrap's .close and .modal,
+using a different class name to prevent triggering modal logic
+*/
+.closer {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #000000;
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+
+.closer:hover,
+.closer:focus {
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+
+button.closer {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
+
+.modaler {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  z-index: 1050;
+  width: 560px;
+  margin-left: -280px;
+  background-color: #ffffff;
+  border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  *border: 1px solid #999;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  outline: none;
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+     -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding-box;
+          background-clip: padding-box;
+}
+
+.input-group-xs > .form-control,
+.input-group-xs > .input-group-addon,
+.input-group-xs > .input-group-btn > .btn {
+  height: 22px;
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+.slider-container {
+  width: 100%;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.position.slider {
+  height: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.slider > * {
+  position: absolute;
+}
+
+.slider > .handle {
+  height: 20px;
+  width: 8px;
+  margin-left: -4px;
+  margin: 0;
+  transition: all 0.4s ease 0.0s;
+}
+.slider > .bar {
+  height: 16px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.slider > .bar.background {
+  width: 100%;
+}
+
+.slider > .lower.bar {
+  left: 0;
+  width: 10%;
+}
+
+.slider > .upper.bar {
+  right: 0;
+  width: 10%;
+}
+
+.slider.x > .handle {
+  background-color: #880000;
+}
+.slider.x > .bar {
+  background-color: #888888;
+}
+.slider.x > .bar.background {
+  background-color: #ff9999;
+}
+
+.slider.y > .handle {
+  background-color: #008800;
+}
+.slider.y > .bar {
+  background-color: #888888;
+}
+.slider.y > .bar.background {
+  background-color: #99ff99;
+}
+
+.slider.z > .handle {
+  background-color: #000088;
+}
+.slider.z > .bar {
+  background-color: #888888;
+}
+.slider.z > .bar.background {
+  background-color: #9999ff;
+}
+
+#path-dropdown {
+  cursor: pointer;
+}
